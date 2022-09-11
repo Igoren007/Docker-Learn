@@ -72,3 +72,46 @@ docker inspect -f "{{.State.Status}}" <name>
 Просмотр логов:
 ```bash
 docker logs <name>
+```
+
+# Сети
+
+### Типы:
+* *bridge*
+* *host* - может быть только одна
+* *none* - может быть только одна
+* *macvlan* - каждый контейнер получает свой mac 
+* *ipvlan* - контейнер имеет mac хоста
+
+Посмотреть какие есть типы сети в докере:
+```bash
+docker network ls
+```
+
+Создать новую сеть и именем **NAME** и типом **bridge**. 
+
+**--driver bridge** можно не указывать, тогда тип также будет **bridge**.
+```bash
+docker network create --driver bridge NAME
+```
+Чтобы контейнеры видели друг друга по имени, они должны быть запущены в одной сети.
+
+Создать сеть со своим диапазоном адресов:
+```bash
+docker network create --driver bridge --subnet 192.168.10.0/24 --gateway 192.168.10.1 MyNet192
+```
+
+Запустить контейнер в этой сети:
+```bash
+docker run --net <NAME> image-name
+```
+
+Получить информацию о какой-то сети:
+```bash
+docker network inspect mynet1
+```
+
+Удалить сеть:
+```bash
+docker network rm mynet1
+```
