@@ -1,4 +1,5 @@
-Команды в контейнере
+# Команды в контейнере
+
 ```bash
 docker exec [params] [name] [command]
 ```
@@ -9,7 +10,7 @@ docker exec [params] [name] [command]
 * **u** - пользователь
 * **w** - рабочая директория
 
-Примеры:
+## Примеры:
 
 Путь к текущей директории в контейнере:
 ```bash
@@ -37,7 +38,7 @@ docker rm my_container -f
 sudo docker exec my_app_3 uptime > text.txt
 ```
 
-
+# Volumes
 
 
 Список volums:
@@ -53,6 +54,8 @@ Volums хранятся по пути:
 ```bash
 /var/lib/docker/volumes/
 ```
+
+# Информация о контейнерах
 
 Потребление ресурсов контейнером:
 ```bash
@@ -104,6 +107,21 @@ docker network create --driver bridge --subnet 192.168.10.0/24 --gateway 192.168
 Запустить контейнер в этой сети:
 ```bash
 docker run --net <NAME> image-name
+```
+
+Задать контейнеру IP:
+```bash
+docker run --net <NAME> --ip x.x.x.x image-name
+```
+
+Переместить работающий контейнер в определенную сеть:
+```bash
+docker network connect <Network-NAME> <container-name>
+```
+
+Отключить контейнер от сети:
+```bash
+docker network disconnect <Network-ID> <container-name>
 ```
 
 Получить информацию о какой-то сети:
