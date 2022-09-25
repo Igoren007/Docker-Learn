@@ -133,3 +133,9 @@ docker network inspect mynet1
 ```bash
 docker network rm mynet1
 ```
+
+
+Cохранить image на диск:
+```bash
+docker save --output <archive-name.tar> <image name>
+```
