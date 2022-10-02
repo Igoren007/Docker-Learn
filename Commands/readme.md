@@ -134,6 +134,11 @@ docker network inspect mynet1
 docker network rm mynet1
 ```
 
+Задать DNS для контейнера:
+```bash
+docker run --net <NAME> --dns <dns-ip> image-name1
+```
+
 
 Cохранить image на диск:
 ```bash
